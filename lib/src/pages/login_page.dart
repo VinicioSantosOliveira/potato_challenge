@@ -16,8 +16,8 @@ class LoginPage extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: <Color>[
-                  Color.fromARGB(255, 255, 116, 2),
-                  Color.fromARGB(255, 255, 166, 32),
+                  Color.fromARGB(255, 255, 81, 0),
+                  Color.fromARGB(255, 255, 145, 0),
                 ],
               ),
               borderRadius: BorderRadius.only(
@@ -46,10 +46,83 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 300,
-            child: TextField(
-              decoration: InputDecoration(labelText: 'Cpf'),
+            height: 30,
+          ),
+          Container(
+            height: 60,
+            width: 330,
+            decoration: const BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(40)),
             ),
+            child: TextFormField(
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.email,
+                  color: Colors.grey[600],
+                ),
+                labelText: 'Email',
+              ),
+              onSaved: (String? value) {
+                // serve para salvar quando o usuario enviar o form
+              },
+              validator: (String? value) {
+                return (value != null && value.contains('@')) ? 'Do not use the @ char.' : null;
+              },
+            ),
+          ),
+          SizedBox(
+            width: 330,
+            child: TextFormField(
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.vpn_key_rounded,
+                  color: Colors.grey[600],
+                ),
+                hintText: 'What do people call you?',
+                labelText: 'Password',
+              ),
+              onSaved: (String? value) {
+                // serve para salvar quando o usuario enviar o form
+              },
+              validator: (String? value) {
+                return (value != null && value.contains('@')) ? 'Do not use the @ char.' : null;
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 200),
+            child: TextButton(
+              onPressed: () {},
+              child: Text(
+                'Forgot Password?',
+                style: TextStyle(color: Colors.grey[800]),
+              ),
+            ),
+          ),
+          ElevatedButton(
+            style: const ButtonStyle(
+              fixedSize: MaterialStatePropertyAll(Size(330, 20)),
+              backgroundColor: MaterialStatePropertyAll(Colors.blue),
+            ),
+            onPressed: () {},
+            child: const Text(
+              'LOGIN',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Don\'t have as account?'),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Register',
+                  style: TextStyle(color: Colors.blueAccent),
+                ),
+              ),
+            ],
           ),
         ],
       ),
